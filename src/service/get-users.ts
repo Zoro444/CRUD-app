@@ -1,7 +1,7 @@
 import path from "path";
 import fs from "fs";
 
-export default async function(payload: string) {
+export default async function() {
   try {
     const filePath = path.resolve('users.json');
     const users = await fs.promises.readFile(filePath, "utf-8");
