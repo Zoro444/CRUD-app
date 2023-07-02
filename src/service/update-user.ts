@@ -31,7 +31,7 @@ export default async function(user: any): Promise<string> {
               else if(item !== "id") {
                 reject(`You can not change or add this param "${item}"`);
               }  
-              usersData.users[user.id].modificationTimestamp = new Date();
+              usersData.users[user.id].modificationTimestamp = new Date().toString();
               usersData.users[user.id].status = true;                     
             }
             
