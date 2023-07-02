@@ -3,7 +3,7 @@ import { deleteUser } from "../service";
 
 export default async function(req: Request, res: Response, next: NextFunction) {
     try {
-        const userId: string = req.body.id; 
+        const userId: any = req.query.id;    
         await deleteUser(userId);
         
         res.status(200).send(`User with id ${userId} was deleted!`);
