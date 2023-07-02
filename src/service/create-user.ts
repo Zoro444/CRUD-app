@@ -24,6 +24,6 @@ export default async function(payload: UserInterface): Promise<UserInterface | u
     return payload;
   }
   catch (err) {
-    console.log('service -> create', err);
+    throw new Error;
   }  
 }  

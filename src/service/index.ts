@@ -1,6 +1,7 @@
 import createUser from "./create-user";
 import getUsers from "./get-users";
 import deleteUser  from "./delete-user";
+import updateUser from "./update-user";
 
 type gender = "male" | "female";
 
@@ -18,5 +19,6 @@ export {
     createUser,
     getUsers,
     deleteUser,
+    updateUser,
     UserInterface
 }

@@ -26,6 +26,6 @@ export default async function(req: Request, res: Response, next: NextFunction) {
     res.status(201).send(`user was created ${JSON.stringify(creatingUser, null, 2)}`);
     }
     catch(err) {
-      res.status(500).send("something went wrong!") 
+        next("error");
     }
 }
