@@ -8,7 +8,7 @@ export default async function(req: Request, res: Response, next: NextFunction): 
     const userInfo: UserInterface = req.body;
  
     if (userInfo.gender !== 'male' && userInfo.gender !== 'female') {
-        res.status(400).json({message: `The user must have gender "male or female"!`});
+        res.status(400).send({message: `The user must have gender "male or female"!`});
         return;
     }
 
@@ -23,7 +23,7 @@ export default async function(req: Request, res: Response, next: NextFunction): 
     }
 
     const creatingUser = await createUser(user);
-    res.status(201).json({message: `user was created ${JSON.stringify(creatingUser, null, 2)}`});
+    res.status(201).send(`user was created ${JSON.stringify(creatingUser, null, 2)}`);
     }
     catch(err) {
         console.log(err);  
