@@ -22,7 +22,7 @@ export default async function(req: Request, res: Response, next: NextFunction): 
       modificationTimestamp: ""
     }
 
-    const creatingUser = await createUser(user);
+    const creatingUser: UserInterface | undefined = await createUser(user);
     res.status(201).send(`user was created ${JSON.stringify(creatingUser, null, 2)}`);
     }
     catch(err) {

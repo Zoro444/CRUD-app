@@ -1,4 +1,4 @@
-import express, { Request, Response, NextFunction } from "express";
+import express, { Request, Response, NextFunction, Application  } from "express";
 import dotenv from "dotenv";
 import router from "./router";
 import { checkValidation } from "./controllers";
@@ -7,7 +7,7 @@ dotenv.config();
 
 function startServer() {
   const port: string = process.env.PORT ?? "3000";
-  const app = express();
+  const app: Application = express();
 
   app.use(express.json());
 
