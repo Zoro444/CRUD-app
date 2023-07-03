@@ -7,7 +7,7 @@ To access the API endpoints, users must include the apiKey in the request header
 
 Base URL
 The base URL for all API endpoints is:
-
+http://localhost:3000/api
 
 GET
 Endpoints
