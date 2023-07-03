@@ -4,9 +4,9 @@ import { UserInterface } from "../service";
 
 export default async function(req: Request, res: Response, next: NextFunction) {
   try {
-
+    const userId: any = req.query.id;    
     const user: UserInterface = req.body;
-    const userUpdated = await updateUser(user);
+    const userUpdated = await updateUser(user, userId);
 
     res.status(200).send(userUpdated);
   }

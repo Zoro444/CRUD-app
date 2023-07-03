@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { UserInterface } from ".";
 
-export default async function(user: any): Promise<string> {
+export default async function(user: any, userId: string): Promise<string> {
     return new Promise((resolve, reject) => {
       try {
         const databaseFilePath = path.resolve("users.json");
@@ -18,11 +18,11 @@ export default async function(user: any): Promise<string> {
         readFromDatabase.on('end', async () => {
           usersData = JSON.parse(data);
  
-          if (usersData.users[user.id] !== undefined) {
+          if (usersData.users[userId] !== undefined) {
             for (const item in user) {
               if (item !== "id" && item !== "creationTimestamp" && item !== "modificationTimestamp" && item !== "status") {
-                if (usersData.users[user.id][item]) {
-                  usersData.users[user.id][item] = user[item]; 
+                if (usersData.users[userId][item]) {
+                  usersData.users[userId][item] = user[item]; 
                 }
                 else {
                   reject(`This param "${item}" is not exists for this user!`);                        
@@ -31,15 +31,15 @@ export default async function(user: any): Promise<string> {
               else if(item !== "id") {
                 reject(`You can not change or add this param "${item}"`);
               }  
-              usersData.users[user.id].modificationTimestamp = new Date().toString();
-              usersData.users[user.id].status = true;                     
+              usersData.users[userId].modificationTimestamp = new Date().toString();
+              usersData.users[userId].status = true;                     
             }
             
             await fs.promises.writeFile(databaseFilePath, JSON.stringify(usersData, null, 2));           
             resolve("user was updated!");
           }
           else {
-            reject(`no user with this id "${user.id}"`);
+            reject(`no user with this id "${userId}"`);
           }
         });
       } 
